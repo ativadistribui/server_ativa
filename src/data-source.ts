@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import "dotenv/config";
-import { DataSource,DataSourceOptions } from "typeorm"
-import { User } from "./entity/User"
+import { DataSource, DataSourceOptions } from "typeorm";
+import { User } from "./entity/User";
 import { Products } from "./entity/Products";
 
 const setDataSourceConfig = (): DataSourceOptions => {
