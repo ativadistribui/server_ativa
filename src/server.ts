@@ -6,7 +6,7 @@ AppDataSource.initialize()
     console.log("Database connected.");
 
     app.listen(3000, () => {
-      console.log(`App is running on https://localhost:3000`);
+      console.log(`Servidor executando`);
     });
   })
   .catch((err) => console.error(err));

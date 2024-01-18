@@ -1,35 +1,46 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from "typeorm";
 import { User } from "./User";
 
 @Entity()
-export class Products{
-    @PrimaryGeneratedColumn('uuid')
-    id:string
+export class Products {
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
-    @Column()
-    title: string
+  @Column()
+  title: string;
 
-    @Column()
-    type:string
+  @Column()
+  type: string;
 
-    @Column()
-    description:string
+  @Column()
+  description: string;
 
-    @Column({nullable :true})
-    capacity: string | null
+  @Column()
+  capacity: string;
 
-    @UpdateDateColumn()
-    updatedAt: Date;
-  
-    @DeleteDateColumn()
-    deletedAt: Date;
+  @UpdateDateColumn()
+  updatedAt: Date;
 
-    @CreateDateColumn()
-    registerDate: Date;
+  @DeleteDateColumn({ nullable: true })
+  deletedAt: Date;
 
-    @Column({ default: false })
-    isDeleted: boolean;
+  @CreateDateColumn()
+  registerDate: Date;
 
-    @ManyToOne(() => User, (user) => user.products)
-    user: User
+  @Column({ default: false })
+  isDeleted: boolean;
+
+  @Column()
+  image: string;
+
+  @ManyToOne(() => User, (user) => user.products)
+  userId: string;
 }

@@ -11,12 +11,12 @@ import { Products } from "./Products";
 @Entity()
 export class User {
   @PrimaryGeneratedColumn("uuid")
-  id: number;
+  id: string;
 
   @Column({ unique: true })
   email: string;
 
-  @OneToMany(() => Products, (products) => products.user)
+  @OneToMany(() => Products, (products) => products.userId)
   products: Products[];
 
   @Column()
