@@ -11,7 +11,8 @@ export const productSerializer: yup.ObjectSchema<IProducts> = yup
     title: yup.string().required(),
     type: yup.string().required(),
     description: yup.string().required(),
-    capacity: yup.string().required(),
+    capacity: yup.array().required(),
+    specificity: yup.string().required(),
     image: yup
       .mixed()
       .required("Imagem é obrigatória")
@@ -26,7 +27,9 @@ export const productReturnSerializer: yup.ObjectSchema<IProductsReturned> =
     title: yup.string(),
     type: yup.string(),
     description: yup.string(),
-    capacity: yup.string(),
+    capacity: yup.array(),
+    isFiled: yup.boolean(),
+    specificity: yup.string(),
     updatedAt: yup.date(),
     deletedAt: yup.date().nullable(),
     registerDate: yup.date(),

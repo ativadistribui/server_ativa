@@ -23,8 +23,8 @@ export class Products {
   @Column()
   description: string;
 
-  @Column()
-  capacity: string;
+  @Column("text", { array: true, nullable: true })
+  capacity: string[] | null;
 
   @UpdateDateColumn()
   updatedAt: Date;
@@ -34,6 +34,12 @@ export class Products {
 
   @CreateDateColumn()
   registerDate: Date;
+
+  @Column({ default: false })
+  isFiled: boolean;
+
+  @Column({ default: false })
+  specificity: string;
 
   @Column({ default: false })
   isDeleted: boolean;
