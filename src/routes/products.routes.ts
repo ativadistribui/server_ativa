@@ -22,7 +22,7 @@ productsRoutes.post(
   createProductController
 );
 
-productsRoutes.get("", ensureAuthMiddleware, listProductsController);
+productsRoutes.get("", listProductsController);
 
 productsRoutes.patch("/:id", ensureAuthMiddleware, updateProductController);
 

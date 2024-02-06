@@ -19,9 +19,7 @@ export const listProductsController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const userId = req.user.id;
-
-  const products = await listProductsService(userId);
+  const products = await listProductsService();
 
   return res.status(200).json(products);
 };

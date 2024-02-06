@@ -1,13 +1,8 @@
 import AppDataSource from "../../data-source";
 import { Products } from "../../entity/Products";
-import {
-  IProducts,
-  IProductsReturned,
-} from "../../interfaces/products.interfaces";
+import { IProductsReturned } from "../../interfaces/products.interfaces";
 
-export const listProductsService = async (
-  userId: string
-): Promise<IProductsReturned[]> => {
+export const listProductsService = async (): Promise<IProductsReturned[]> => {
   const productRepo = AppDataSource.getRepository(Products);
   const product = await productRepo.find();
 
