@@ -6,10 +6,12 @@ import {
   IProductsReturned,
 } from "../../interfaces/products.interfaces";
 import { productReturnSerializer } from "../../serializer/product.serializer";
+import { Multer } from "multer";
 
 export const createProductService = async (
   data: IProducts,
-  userId: string
+  userId: string,
+  file: Multer.file
 ): Promise<IProductsReturned> => {
   const userRepo = AppDataSource.getRepository(User);
   const productsRepo = AppDataSource.getRepository(Products);
@@ -21,6 +23,7 @@ export const createProductService = async (
   const product = productsRepo.create({
     ...data,
     userId: findUser.id,
+    image: file.originalname,
   });
 
   await productsRepo.save(product);

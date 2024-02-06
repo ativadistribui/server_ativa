@@ -5,10 +5,12 @@ import {
   IProductsReturned,
 } from "../../interfaces/products.interfaces";
 import { productReturnSerializer } from "../../serializer/product.serializer";
+import { Multer } from "multer";
 
 export const updateProductService = async (
   data: Partial<IProducts>,
-  productId
+  productId,
+  file?: Multer.file
 ): Promise<IProductsReturned> => {
   const productRepo = AppDataSource.getRepository(Products);
 
@@ -21,7 +23,7 @@ export const updateProductService = async (
     type: data.type ?? findProduct.type,
     description: data.description ?? findProduct.description,
     capacity: data.capacity ?? findProduct.capacity,
-    specificity: data.specificity ?? findProduct.specificity,
+    image: file ? file.originalname : findProduct.image,
   });
 
   await productRepo.save(updateProduct);

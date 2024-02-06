@@ -3,7 +3,7 @@ import {
   IProducts,
   IProductsReturned,
 } from "../interfaces/products.interfaces";
-// import { Multer } from "multer";
+import { Multer } from "multer";
 
 export const productSerializer: yup.ObjectSchema<IProducts> = yup
   .object()
@@ -13,13 +13,12 @@ export const productSerializer: yup.ObjectSchema<IProducts> = yup
     description: yup.string().required(),
     capacity: yup.array().required(),
     specificity: yup.string().required(),
-    image: yup.string().required(),
-    // image: yup
-    //   .mixed()
-    //   .required("Imagem é obrigatória")
-    //   .test("isFile", "Apenas arquivos de imagem são permitidos", (value) => {
-    //     return value && typeof value === "object" && "fieldname" in value;
-    //   }),
+    image: yup
+      .mixed()
+      .required("Imagem é obrigatória")
+      .test("isFile", "Apenas arquivos de imagem são permitidos", (value) => {
+        return value && typeof value === "object" && "fieldname" in value;
+      }),
   });
 
 export const productReturnSerializer: yup.ObjectSchema<IProductsReturned> =

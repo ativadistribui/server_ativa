@@ -10,7 +10,7 @@ export const createProductController = async (
 ): Promise<Response> => {
   const data = req.body;
   const userId = req.user.id;
-  const product = await createProductService(data, userId);
+  const product = await createProductService(data, userId, req.file);
 
   return res.status(201).json(product);
 };
@@ -31,7 +31,7 @@ export const updateProductController = async (
   const data = req.body;
   const productId = req.params.id;
 
-  const product = await updateProductService(data, productId);
+  const product = await updateProductService(data, productId, req.file);
 
   return res.status(200).json(product);
 };
