@@ -17,19 +17,14 @@ export const productsRoutes = Router();
 productsRoutes.post(
   "",
   ensureAuthMiddleware,
-  handleImageUpload,
+
   verifySchemaMiddleware(productSerializer),
   createProductController
 );
 
 productsRoutes.get("", ensureAuthMiddleware, listProductsController);
 
-productsRoutes.patch(
-  "/:id",
-  ensureAuthMiddleware,
-  handleImageUpload,
-  updateProductController
-);
+productsRoutes.patch("/:id", ensureAuthMiddleware, updateProductController);
 
 productsRoutes.delete(
   "/:id",

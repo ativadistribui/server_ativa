@@ -6,7 +6,7 @@ export interface IProducts {
   description: string;
   specificity: string;
   capacity: string[];
-  image: Multer.File;
+  image: string;
 }
 
 export interface IProductsReturned {
