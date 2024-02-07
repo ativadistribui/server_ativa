@@ -13,6 +13,7 @@ export const productSerializer: yup.ObjectSchema<IProducts> = yup
     description: yup.string().required(),
     capacity: yup.array().required(),
     specificity: yup.string().required(),
+    isFiled: yup.boolean().notRequired(),
     // image: yup
     //   .mixed()
     //   .required("Imagem é obrigatória")

@@ -9,20 +9,23 @@ import { productReturnSerializer } from "../../serializer/product.serializer";
 
 export const updateProductService = async (
   data: Partial<IProducts>,
-  productId,
+  productId
 ): Promise<IProductsReturned> => {
   const productRepo = AppDataSource.getRepository(Products);
 
   const findProduct: IProductsReturned | undefined = await productRepo.findOne({
     where: { id: productId },
   });
+  console.log(findProduct, "produto");
+  console.log(data, "corpo da requisição");
 
   const updateProduct = productRepo.merge(findProduct, {
     title: data.title ?? findProduct.title,
     type: data.type ?? findProduct.type,
     description: data.description ?? findProduct.description,
     capacity: data.capacity ?? findProduct.capacity,
-    // image: file ? file.originalname : findProduct.image,
+    isFiled: data.isFiled ?? findProduct.isFiled,
+    image: data.image ?? findProduct.image,
   });
 
   await productRepo.save(updateProduct);
@@ -33,6 +36,8 @@ export const updateProductService = async (
       stripUnknown: true,
     }
   )) as IProductsReturned;
+
+  console.log(updateProduct, "produto atualizado");
 
   return productReturned;
 };

@@ -7,6 +7,7 @@ export interface IProducts {
   specificity: string;
   capacity: string[];
   image: string;
+  isFiled: boolean;
 }
 
 export interface IProductsReturned {
