@@ -6,7 +6,6 @@ import {
   IProductsReturned,
 } from "../../interfaces/products.interfaces";
 import { productReturnSerializer } from "../../serializer/product.serializer";
-// import { Multer } from "multer";
 
 export const createProductService = async (
   data: IProducts,

@@ -5,7 +5,6 @@ import {
   IProductsReturned,
 } from "../../interfaces/products.interfaces";
 import { productReturnSerializer } from "../../serializer/product.serializer";
-// import { Multer } from "multer";
 
 export const updateProductService = async (
   data: Partial<IProducts>,
@@ -16,8 +15,6 @@ export const updateProductService = async (
   const findProduct: IProductsReturned | undefined = await productRepo.findOne({
     where: { id: productId },
   });
-  console.log(findProduct, "produto");
-  console.log(data, "corpo da requisição");
 
   const updateProduct = productRepo.merge(findProduct, {
     title: data.title ?? findProduct.title,
@@ -37,8 +34,6 @@ export const updateProductService = async (
       stripUnknown: true,
     }
   )) as IProductsReturned;
-
-  console.log(updateProduct, "produto atualizado");
 
   return productReturned;
 };

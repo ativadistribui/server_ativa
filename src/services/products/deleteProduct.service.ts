@@ -4,7 +4,6 @@ import { AppError } from "../../errors/appError";
 import { IProductsReturned } from "../../interfaces/products.interfaces";
 
 export const deleteProductService = async (productId): Promise<void> => {
-  console.log(productId);
   const productRepo = AppDataSource.getRepository(Products);
 
   const currentProduct: IProductsReturned | undefined =

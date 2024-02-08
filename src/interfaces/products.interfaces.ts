@@ -1,5 +1,3 @@
-// import { Multer } from "multer";
-
 export interface IProducts {
   title: string;
   type: string;
