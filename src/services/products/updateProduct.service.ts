@@ -25,6 +25,7 @@ export const updateProductService = async (
     description: data.description ?? findProduct.description,
     capacity: data.capacity ?? findProduct.capacity,
     isFiled: data.isFiled ?? findProduct.isFiled,
+    specificity: data.specificity ?? findProduct.specificity,
     image: data.image ?? findProduct.image,
   });
 
