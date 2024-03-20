@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import "dotenv/config";
-import { DataSource,DataSourceOptions } from "typeorm"
-import { User } from "./entity/User"
+import { DataSource, DataSourceOptions } from "typeorm";
+import { User } from "./entity/User";
 import { Products } from "./entity/Products";
 
 const setDataSourceConfig = (): DataSourceOptions => {
@@ -21,7 +21,7 @@ const setDataSourceConfig = (): DataSourceOptions => {
       type: "postgres",
       url: process.env.DATABASE_URL,
       entities: [Products, User],
-      migrations: ["src/migrations/*.ts"],
+      migrations: ["src/migrations/*.ts/*js"],
     };
   }
 
@@ -35,7 +35,7 @@ const setDataSourceConfig = (): DataSourceOptions => {
     synchronize: false,
     logging: false,
     entities: [Products, User],
-    migrations: ["src/migrations/*.ts"],
+    migrations: ["src/migrations/*.ts/*js"],
   };
 };
 
