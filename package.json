@@ -25,9 +25,8 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "dev": "ts-node-dev --ignore-watch node_modules src/server.ts",
-    "typeorm": "ts-node-dev --transpile-only ./node_modules/typeorm/cli.js",
+    "typeorm": "ts-node --transpile-only ./node_modules/typeorm/cli.js",
     "migration:run": "yarn typeorm migration:run -d dist",
-
     "setup": "yarn install && yarn typeorm migration:run && yarn tsc"
   }
 }
