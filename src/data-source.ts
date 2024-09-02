@@ -21,8 +21,7 @@ const setDataSourceConfig = (): DataSourceOptions => {
       type: "postgres",
       url: process.env.DATABASE_URL,
       entities: [Products, User],
-      migrations: ["dist/migrations/**.{js,ts}"],
-      ssl: { rejectUnauthorized: false },
+      migrations: ["src/migrations/.ts"],
     };
   }
 
@@ -36,7 +35,7 @@ const setDataSourceConfig = (): DataSourceOptions => {
     synchronize: false,
     logging: false,
     entities: [Products, User],
-    migrations: ["src/migrations/**.{js,ts}"],
+    migrations: ["src/migrations/.ts"],
   };
 };
 
