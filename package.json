@@ -23,7 +23,8 @@
     "yup": "^1.3.3"
   },
   "scripts": {
-    "build": "tsc",  
+    "build": "tsc",
+    "start": "node dist/server.js",
     "vercel-build": "yarn build && yarn migration:run",
     "dev": "ts-node-dev --ignore-watch node_modules src/server.ts"
   }
