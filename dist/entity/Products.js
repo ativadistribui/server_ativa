@@ -14,6 +14,7 @@ const typeorm_1 = require("typeorm");
 const User_1 = require("./User");
 let Products = class Products {
 };
+exports.Products = Products;
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
     __metadata("design:type", String)
@@ -66,8 +67,7 @@ __decorate([
     (0, typeorm_1.ManyToOne)(() => User_1.User, (user) => user.products),
     __metadata("design:type", String)
 ], Products.prototype, "userId", void 0);
-Products = __decorate([
+exports.Products = Products = __decorate([
     (0, typeorm_1.Entity)()
 ], Products);
-exports.Products = Products;
 //# sourceMappingURL=Products.js.map

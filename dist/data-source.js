@@ -20,7 +20,7 @@ const setDataSourceConfig = () => {
             type: "postgres",
             url: process.env.DATABASE_URL,
             entities: [Products_1.Products, User_1.User],
-            migrations: ["src/migrations/.ts"],
+            migrations: ["dist/migrations/.js"],
         };
     }
     return {
@@ -33,7 +33,7 @@ const setDataSourceConfig = () => {
         synchronize: false,
         logging: false,
         entities: [Products_1.Products, User_1.User],
-        migrations: ["src/migrations/.ts"],
+        migrations: ["dist/migrations/.js"],
     };
 };
 const dataSourceConfig = setDataSourceConfig();
