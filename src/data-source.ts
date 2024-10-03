@@ -2,16 +2,19 @@ import "reflect-metadata";
 import "dotenv/config";
 import { DataSource, DataSourceOptions } from "typeorm";
 import { User } from "./entity/User";
+import path from "path";
 import { Products } from "./entity/Products";
 
 const setDataSourceConfig = (): DataSourceOptions => {
   const nodeEnv: string = process.env.NODE_ENV;
+  const entities: string = path.join(__dirname, "./entities/**.{js,ts}");
+  const migrations: string = path.join(__dirname, "./migrations/**.{js,ts}");
 
   if (nodeEnv === "test") {
     return {
       type: "sqlite",
       database: ":memory:",
-      entities: [Products, User],
+      entities: [path.join(__dirname, "./entities/**.{js,ts}")],
       synchronize: true,
     };
   }
@@ -21,7 +24,7 @@ const setDataSourceConfig = (): DataSourceOptions => {
       type: "postgres",
       url: process.env.DATABASE_URL,
       entities: [Products, User],
-      migrations: ["dist/migrations/.js"],
+      migrations: [migrations],
     };
   }
 
@@ -34,8 +37,8 @@ const setDataSourceConfig = (): DataSourceOptions => {
     port: parseInt(process.env.PGPORT),
     synchronize: false,
     logging: false,
-    entities: [Products, User],
-    migrations: ["dist/migrations/.js"],
+    entities: [entities],
+    migrations: [migrations],
   };
 };
 
