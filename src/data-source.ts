@@ -7,7 +7,7 @@ import { Products } from "./entity/Products";
 
 const setDataSourceConfig = (): DataSourceOptions => {
   const nodeEnv: string = process.env.NODE_ENV;
-  const entities: string = path.join(__dirname, "./entities/**.{js,ts}");
+ 
   const migrations: string = path.join(__dirname, "./migrations/**.{js,ts}");
 
   if (nodeEnv === "test") {
@@ -37,7 +37,7 @@ const setDataSourceConfig = (): DataSourceOptions => {
     port: parseInt(process.env.PGPORT),
     synchronize: false,
     logging: false,
-    entities: [entities],
+    entities: [User, Products],
     migrations: [migrations],
   };
 };
